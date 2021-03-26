@@ -2,7 +2,7 @@ Instructions for setting up project on your computer:
 WARNING: Things you will need to have before starting:
 Python 3. To make sure you have it, run the following command to check:
 
-   #$python3 -V to check
+   $python3 -V to check
 
 (if you don't have it, get it here: https://www.python.org/download/releases/3.0/)
 	
