@@ -4,6 +4,7 @@ import axios from 'axios';
 import React,{Component} from 'react';
 
 import Nav from './components/Nav/Nav';
+import Footer from './components/Footer/Footer';
 
 import { BrowserRouter } from 'react-router-dom'
 
@@ -148,7 +149,7 @@ class App extends Component {
         <BrowserRouter>
         <Nav />
         </BrowserRouter>
-            <h1>
+          {/*  <h1>
               Resume Tracker Basic Front End
             </h1>
             <h3>
@@ -160,7 +161,8 @@ class App extends Component {
                   Upload!
                 </button>
             </div>
-          {this.fileData()}
+          {this.fileData()}*/}
+          <Footer />
         </div>
       );
     }
