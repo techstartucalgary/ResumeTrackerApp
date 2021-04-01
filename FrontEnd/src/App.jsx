@@ -2,11 +2,15 @@
 import axios from 'axios';
 
 import React,{Component} from 'react';
+import { ResumeProvider } from './contexts/ResumeContext';
 
 import Nav from './components/Nav/Nav';
 import Footer from './components/Footer/Footer';
+import Upload from './components/Upload/Upload';
+import Test from './Test';
 
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 class App extends Component {
 
@@ -146,23 +150,18 @@ class App extends Component {
 
       return (
         <div>
+        <ResumeProvider>
         <BrowserRouter>
         <Nav />
         </BrowserRouter>
-          {/*  <h1>
-              Resume Tracker Basic Front End
-            </h1>
-            <h3>
-              File Upload
-            </h3>
-            <div>
-                <input type="file" onChange={this.onFileChange} />
-                <button onClick={this.onFileUpload}>
-                  Upload!
-                </button>
-            </div>
-          {this.fileData()}*/}
+        <Router>
+          <Switch>
+            <Route path="/" component={Upload} exact />
+            <Route path="/results" component={Test} exact />
+          </Switch>
+        </Router>
           <Footer />
+          </ResumeProvider>
         </div>
       );
     }
