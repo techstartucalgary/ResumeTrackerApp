@@ -2,11 +2,10 @@
   background-color: var(--dark-grey);
   min-height: 7em;
   width: 100%;
-  position: absolute;
+  position: relative;
   bottom: 0;
-  left: 0;
-  right: 0;
   text-align: center;
+  margin-top: 40px;
 }
 
 .footer-contact-info {
