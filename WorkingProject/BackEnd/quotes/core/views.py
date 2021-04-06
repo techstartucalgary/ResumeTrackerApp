@@ -3,7 +3,8 @@ from rest_framework.views import APIView
 from . models import *
 from rest_framework.response import Response
 from . serializer import *
-import PyPDF2
+import operator
+import fitz  # this is pymupdf
 from . Parser import *
 import json 
 
@@ -20,8 +21,8 @@ class ReactView(APIView):
   
   	# Must implement error checking
     def post(self, request):
-        pdfReader = handleRequest(request)
-        endData = compute(pdfReader)
+        doc = handleRequest(request)
+        endData = compute(doc)
         print(endData)
         return Response(endData)
 
@@ -31,8 +32,10 @@ class ReactView(APIView):
 def handleRequest(request):
 	files = request.FILES
 	f = files['myFile']
-	pdfReader = PyPDF2.PdfFileReader(f)
-	return pdfReader
+	strm = f.read()
+	doc = fitz.open(stream=strm, filetype="pdf")
+	#pdfReader = PyPDF2.PdfFileReader(f)
+	return doc
 	
 	
 	
