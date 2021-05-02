@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from . serializer import *
 import operator
 import fitz  # this is pymupdf
-from . Parser import *
+from . AI import Analyzer
 import json 
 
 # Create your views here.
@@ -22,7 +22,7 @@ class ReactView(APIView):
   	# Must implement error checking
     def post(self, request):
         doc = handleRequest(request)
-        endData = compute(doc)
+        endData = Analyzer.compute(doc)
         print(endData)
         return Response(endData)
 

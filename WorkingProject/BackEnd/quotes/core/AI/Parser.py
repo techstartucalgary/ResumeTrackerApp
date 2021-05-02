@@ -1,7 +1,6 @@
 import operator
 import fitz  # this is pymupdf
 
-
 def fonts(doc, granularity=False):
     """Extracts fonts and their usage in PDF documents.
     :param doc: PDF document to iterate through
@@ -131,64 +130,12 @@ def headers_para(doc, size_tag):
 # Source code https://towardsdatascience.com/extracting-headers-and-paragraphs-from-pdf-using-pymupdf-676e8421c467
 
 
-possibleHeaders = {
-	"Education" : "Education",
-	"Schooling" : "Education",
-	"Training" : "Education",
-	"Credentials" : "Education",
-	"Studies" : "Education",
-	"Academics" : "Education",
-	"Academic History" : "Education",
-	
-	"Experience" : "Experience",
-	"Employment" : "Employment",
-	"Volunteering" : "Volunteering",
-	"Activities" : "Experience",
-	
-	"Skills" : "Skills",
-	"Skill-Set" : "Skills",
-	"Skillset" : "Skills",
-	"Skill" : "Skill",
-	
-	"Project" : "Projects",
-	"Ventures" : "Projects",
-	"Publications" : "Projects"
-}
-
 def pdfParse(doc):
-
-	#doc = fitz.open("testResume.pdf")
 	font_counts, styles = fonts(doc)
-	#print(font_counts)
-	#print(styles)
-	
-	tages = font_tags(font_counts, styles)
-	#print(tages)
-	
-	para = headers_para(doc, tages)
-	print(para)
+	tags = font_tags(font_counts, styles)
+	paragraphs = headers_para(doc, tags)
+	return font_counts, styles, tags, paragraphs
 	
 
 
-class Result:
-	
-	dict = {}
-	
-	def __init__ (self):
-		self.dict = {'totalScore': '0', 'educationScore': '0', 'educationComments': 'You are dumb.',
-        'experienceScore': '0', 'experienceComments': 'You are inexperienced' , 'formattingScore': '0', 
-        'formattingComments': 'Terrible Formatting.', 'name': 'NoName', 'detail': 'N.A.'}
-	
-	
-
-	
-# This method will parse the file			
-def compute(doc):
-	pdfParse(doc)
-	#pageObj = pdfReader.getPage(0)
-	#text = pageObj.extractText()
-	#education = getEducation(text)
-	#print(education)
-	dummyResult = Result()
-	return dummyResult.dict
 
