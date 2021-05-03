@@ -1,5 +1,6 @@
-import axios from "axios";
-import React, { useCallback, useState, useEffect } from "react";
+/* eslint-disable */
+import axios from 'axios';
+import React, { useCallback, useState, useEffect } from 'react';
 
 export const ResumeContext = React.createContext({
   result: null,
@@ -20,7 +21,7 @@ export const ResumeProvider = ({ children }) => {
 
   const requestData = useCallback(async () => {
     await axios
-      .post("http://127.0.0.1:8000/wel", formData)
+      .post('http://127.0.0.1:8000/wel', formData)
       .then((res) => {
         setResult({
           totalScore: res.data.totalScore,
@@ -50,7 +51,7 @@ export const ResumeProvider = ({ children }) => {
   useEffect(() => {
     if (loading) {
       setTimeout(() => { requestData(); }, 3000);
-      //requestData();
+      // requestData();
     }
   }, [loading, requestData]);
 
@@ -63,7 +64,7 @@ export const ResumeProvider = ({ children }) => {
 
   return (
     <ResumeContext.Provider value={context}>
-      {typeof children === "function" ? children(context) : children}
+      {typeof children === 'function' ? children(context) : children}
     </ResumeContext.Provider>
   );
 };
