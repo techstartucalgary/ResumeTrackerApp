@@ -49,8 +49,8 @@ export const ResumeProvider = ({ children }) => {
 
   useEffect(() => {
     if (loading) {
-      //setTimeout(() => { requestData(); }, 2000);
-      requestData();
+      setTimeout(() => { requestData(); }, 3000);
+      //requestData();
     }
   }, [loading, requestData]);
 

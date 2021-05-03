@@ -6,7 +6,7 @@ import { ResumeProvider } from './contexts/ResumeContext';
 
 import Nav from './components/Nav/Nav';
 import Footer from './components/Footer/Footer';
-import Upload from './components/Upload/Upload';
+import LandingPage from './pages/LandingPage/LandingPage';
 import Test from './Test';
 
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
@@ -156,7 +156,7 @@ class App extends Component {
         </BrowserRouter>
         <Router>
           <Switch>
-            <Route path="/" component={Upload} exact />
+            <Route path="/" component={LandingPage} exact />
             <Route path="/results" component={Test} exact />
           </Switch>
         </Router>

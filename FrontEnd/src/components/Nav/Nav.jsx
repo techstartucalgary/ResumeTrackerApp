@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Link as ScrollLink } from "react-scroll";
+import { Link as ScrollLink,  Element} from "react-scroll";
 import "./Nav.scss";
 
 const Nav = () => {
@@ -9,17 +9,17 @@ const Nav = () => {
         <h1 className="nav-title">Resume Rater</h1>
         <h3 className="nav-subtitle">By Tech Start UCalgary Team</h3>
       </Link>
+      <ScrollLink
+        activeClass="active"
+        to="service"
+        spy={true}
+        smooth={true}
+        duration={1000}
+      >
       <button className="service-button">
-        <ScrollLink
-          activeClass="active"
-          to=""
-          spy={true}
-          smooth={true}
-          offset={-70}
-          duration={500}
-        />
         Our Service
       </button>
+        </ScrollLink>
     </div>
   );
 };
