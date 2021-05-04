@@ -109,10 +109,7 @@ def organize_headers(tages, para):
 			if isSubString(each_line, k):
 				dict[k] = dict[k] + [each_line]
 		
-	
-	for k in dict.keys():
-		print(k, ".....", dict[k])
-	
+		
 	return dict
 
 
@@ -139,7 +136,6 @@ def check_section_independance(organized_file, para):
 				count_independent_sections = count_independent_sections + 1
 			else:
 				non_independent_sections.append(each_section)
-				print(each_section)
 		
 		if count_independent_sections > 0:
 			break
@@ -151,7 +147,9 @@ def check_section_independance(organized_file, para):
 	if ((count_independent_sections < len(present_sections)) and (count_independent_sections > 0)):
 		score = (len(non_independent_sections))*-1
 		comments.append("The headers: ")
-		comments = comments + non_independent_sections
+		for n in non_independent_sections:
+			comments.append(n)
+			comments.append(", ")
 		comments.append(" should have the same category level as the headers: ")
 		for d in setDifference(present_sections, non_independent_sections):
 			comments.append(d)
