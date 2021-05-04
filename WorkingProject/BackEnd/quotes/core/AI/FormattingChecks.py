@@ -3,14 +3,20 @@ from . ParseHelpers import *
 acceptable_fonts = ['Calibri', 'Times New Roman', 'Cambria', 'Garamond', 'Georgia', 'Helvetica', 'Arial', 'Verdana']
 
 def formatting_checks(font_counts, font_styles, tages, para):
-	#print (font_counts)
-	#print("\n\n")
-	#print(font_styles)
-	#print(tages)
-	#print(para)
+	print (font_counts)
+	print("\n\n")
+	print(font_styles)
+	print(tages)
+	print(para)
 	font_size_score, font_size_comments = check_font_sizes(font_counts)
 	score = font_size_score
 	comments = font_size_comments  # you can add comments by comments.append("......")
+	
+	font_style_score, font_style_comments = check_font_styles(font_styles)
+	
+	score = score + font_style_score
+	comments = comments + font_style_comments
+	
 	return score, comments
 
 
@@ -55,6 +61,32 @@ def check_font_sizes(font_counts):
 	return font_size_score, font_size_comments
 
 
+def check_font_styles(font_styles):
+	bad_fonts_count = 0
+	bad_fonts_comments = []
+	bad_fonts = []
+	
+	for val in font_styles.values():
+		if not inn(val['font'], acceptable_fonts):
+			bad_fonts_count = bad_fonts_count + 1
+			bad_fonts.append(val['font'])
+			bad_fonts.append(", ")
+	
+	
+	if (bad_fonts_count > 0):
+		bad_fonts_comments.append("These fonts aren't typical to a professional resumé: ")
+		bad_fonts_comments = bad_fonts_comments + bad_fonts
+	
+	
+	return (bad_fonts_count*-1), bad_fonts_comments
 
+
+def inn(strn, list_elements):
+	for each_element in list_elements:
+		if isSubString(strn, each_element):
+			return True
+	
+	
+	return False
 			
 		
