@@ -3,19 +3,27 @@ from . ParseHelpers import *
 acceptable_fonts = ['Calibri', 'Times New Roman', 'Cambria', 'Garamond', 'Georgia', 'Helvetica', 'Arial', 'Verdana']
 
 def formatting_checks(font_counts, font_styles, tages, para):
-	print (font_counts)
-	print("\n\n")
-	print(font_styles)
-	print(tages)
-	print(para)
+	#print (font_counts)
+	#print("\n\n")
+	#print(font_styles)
+	#print(tages)
+	#print(para)
+	
+	# Check font sizes
 	font_size_score, font_size_comments = check_font_sizes(font_counts)
 	score = font_size_score
 	comments = font_size_comments  # you can add comments by comments.append("......")
 	
+	# Check font styles 
 	font_style_score, font_style_comments = check_font_styles(font_styles)
-	
 	score = score + font_style_score
 	comments = comments + font_style_comments
+	
+	organized_file = organize_headers(tages, para)
+	section_ind_score, section_ind_comments = check_section_independance(organized_file, para)
+	score = score + section_ind_score
+	comments = comments + section_ind_comments
+	
 	
 	return score, comments
 
@@ -83,10 +91,89 @@ def check_font_styles(font_styles):
 
 def inn(strn, list_elements):
 	for each_element in list_elements:
-		if isSubString(strn, each_element):
+		if (isSubString(strn, each_element) or isSubString(each_element, strn)) :
 			return True
 	
 	
 	return False
-			
+	
+
+
+def organize_headers(tages, para):
+	dict = {}
+	for header in tages.values():
+		dict[header] = []
+	
+	for each_line in para:
+		for k in dict.keys():
+			if isSubString(each_line, k):
+				dict[k] = dict[k] + [each_line]
+		
+	
+	for k in dict.keys():
+		print(k, ".....", dict[k])
+	
+	return dict
+
+
+def check_section_independance(organized_file, para):
+	
+	potential_sections = ["Skill", "Education", "Experience", "Project", "History"]
+	present_sections = []
+	
+	for potential_section in potential_sections:
+		if (len(getSection(para, potential_section)) > 0):
+			present_sections.append(potential_section)
+
+	
+	score = 0
+	comments = []
+	count_independent_sections = 0
+	non_independent_sections = []
+	
+	# Make sure education, experience and skills, and/or projects get their own headers at the same level
+	for level in organized_file.keys():
+		titles = organized_file[level]
+		for each_section in present_sections:
+			if (inn(each_section, organized_file[level])):
+				count_independent_sections = count_independent_sections + 1
+			else:
+				non_independent_sections.append(each_section)
+				print(each_section)
+		
+		if count_independent_sections > 0:
+			break
+		
+		else:
+			non_independent_sections = []
+
+	
+	if ((count_independent_sections < len(present_sections)) and (count_independent_sections > 0)):
+		score = (len(non_independent_sections))*-1
+		comments.append("The headers: ")
+		comments = comments + non_independent_sections
+		comments.append(" should have the same category level as the headers: ")
+		for d in setDifference(present_sections, non_independent_sections):
+			comments.append(d)
+			comments.append(", ")
+
+	
+	return score, comments
+		
+
+
+def setDifference(list1, list2):
+	res = []
+	for l in list1:
+		if l not in list2:
+			res.append(l)
+	
+	return res	
+		
+	
+
+
+	
+	
+				
 		
