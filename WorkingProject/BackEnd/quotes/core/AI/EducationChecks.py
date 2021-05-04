@@ -8,12 +8,30 @@ from . ParseHelpers import *
 def education_checks(block_of_text):
     #print(block_of_text)        # To help you view what the argument looks like
     #print("\n")
+	score = 0
+	comments = []  
+	
+	if (isSubString(block_of_text, "Computer Science")):
+		score += 10
+	
+	elif (isSubString(block_of_text, "CS")):	
+		score += 10
+	
+	elif (isSubString(block_of_text, "Software Engineering")):	
+		score += 10
+	
+	elif (isSubString(block_of_text, "Electrical Engineering")):	
+		score += 10
+	
+	elif (isSubString(block_of_text, "Computer Engineering")):	
+		score += 10
+		
+	else:
+		score = -10
+		comments.append("In today's job market, a degree in CS or Engineering is expected.")
 
-    if ('Computer Science') or ('Electrical Engineering') or ('Software Engineering') or ('Computer Engineering') in block_of_text:
-        score += 10; 
+	#TO-DO: Check GPA
 
-#TO-DO: Check GPA
 
-    #score = 0
-    comments = ["testComment"]  # you can add comments by comments.append("......")
-    return score, comments
+    
+	return score, comments
