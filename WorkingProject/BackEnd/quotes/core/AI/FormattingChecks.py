@@ -128,6 +128,18 @@ def check_section_independance(organized_file, para):
 	count_independent_sections = 0
 	non_independent_sections = []
 	
+	
+	# Make sure education, experience and skills are in resume 
+	if ("Education" not in present_sections):
+		score = score - 1
+		comments.append("Include an Education section. ")
+	if ("Experience" not in present_sections):
+		score = score - 1
+		comments.append("Include an Experience section. ")
+	if ("Skill" not in present_sections):
+		score = score - 1
+		comments.append("Include a Skills section. ")
+	
 	# Make sure education, experience and skills, and/or projects get their own headers at the same level
 	for level in organized_file.keys():
 		titles = organized_file[level]
@@ -169,6 +181,7 @@ def setDifference(list1, list2):
 	return res	
 		
 	
+
 
 
 	
