@@ -39,4 +39,3 @@ def handleRequest(request):
 	
 	
 	
-
