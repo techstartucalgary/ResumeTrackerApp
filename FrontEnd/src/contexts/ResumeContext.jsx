@@ -7,7 +7,6 @@ export const ResumeContext = React.createContext({
   loading: false,
   formData: null,
   requestResults: () => {},
-  pushHistory: () => {},
 });
 
 export const ResumeProvider = ({ children }) => {
@@ -16,6 +15,7 @@ export const ResumeProvider = ({ children }) => {
   const [formData, setFormData] = useState(null);
 
   const requestResults = (value) => {
+    setLoading(true);
     setFormData(value);
   };
 
@@ -43,17 +43,11 @@ export const ResumeProvider = ({ children }) => {
   }, [formData]);
 
   useEffect(() => {
-    if (formData != null) {
-      setLoading(true);
-    }
-  }, [formData]);
-
-  useEffect(() => {
-    if (loading) {
-      setTimeout(() => { requestData(); }, 3000);
+    if (formData !== null) {
+      setTimeout(() => { requestData(); }, 4000);
       // requestData();
     }
-  }, [loading, requestData]);
+  }, [formData]);
 
   const context = {
     result,
