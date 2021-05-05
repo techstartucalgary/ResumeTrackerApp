@@ -29,13 +29,11 @@ const Test = () => {
   return (
     <div>
       {loading && (
-      <div id="searching-animation" style={{ minHeigth: '800px', marginTop: '60px' }}>
+      <div id="searching-animation">
         <Lottie
           options={options}
-          height={600}
-          width={600}
         />
-        <h1 style={{ marginBottom: '100px', marginLeft: '40%' }}>
+        <h1>
           Scanning Your Resume .......
         </h1>
       </div>

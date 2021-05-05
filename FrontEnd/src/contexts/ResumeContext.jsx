@@ -44,7 +44,7 @@ export const ResumeProvider = ({ children }) => {
 
   useEffect(() => {
     if (formData !== null) {
-      setTimeout(() => { requestData(); }, 4000);
+      setTimeout(() => { requestData(); }, 3000);
       // requestData();
     }
   }, [formData]);

@@ -1,5 +1,6 @@
 .pdf-container {
   height: calc(100vh - 100px);
+  min-height: 500px;
   overflow-y: scroll;
   max-width: 649px;
   width: 100%;

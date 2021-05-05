@@ -7,7 +7,8 @@
   border: 3.5px dotted var(--dark-blue);
 }
 
-.upload-box-inner {
+.upload-box-container:hover {
+  opacity: 0.8;
 }
 
 .upload-box-inner > label {

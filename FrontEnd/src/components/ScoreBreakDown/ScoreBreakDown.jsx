@@ -35,7 +35,7 @@ const ScoreBreakDown = ({ scoreCategory, score, comments }) => {
 
 ScoreBreakDown.propTypes = {
   scoreCategory: PropTypes.string.isRequired,
-  score: PropTypes.number.isRequired,
+  score: PropTypes.string.isRequired,
   comments: PropTypes.string.isRequired,
 };
 

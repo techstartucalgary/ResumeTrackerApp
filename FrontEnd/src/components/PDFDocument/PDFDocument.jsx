@@ -1,6 +1,6 @@
-/* eslint-disable */
 import React, { useState } from 'react';
 import { Document, Page, pdfjs } from 'react-pdf';
+import PropTypes from 'prop-types';
 import './PDFDocument.scss';
 
 const PDFDocument = ({ inputFile }) => {
@@ -21,7 +21,6 @@ const PDFDocument = ({ inputFile }) => {
   }
 
   reader.onloadend = () => {
-    console.log('reader result is: ', reader.result);
     setFile(reader.result);
   };
 
@@ -33,13 +32,23 @@ const PDFDocument = ({ inputFile }) => {
       >
         {Array.from({ length: numberPages }, (v, i) => (
           <div>
-            <Page size="A4" key={i} pageNumber={i + 1} style={{ width: '300px', orientation: 'portrait' }} />
-            {i != (numberPages - 1) && (<br />)}
+            <Page key={i} pageNumber={i + 1} style={{ width: '300px', orientation: 'portrait' }} />
+            {i !== (numberPages - 1) && (<br />)}
           </div>
         ))}
       </Document>
     </div>
   );
+};
+
+PDFDocument.propTypes = {
+  inputFile: PropTypes.shape({
+    lastModified: PropTypes.number,
+    name: PropTypes.string,
+    size: PropTypes.number,
+    type: PropTypes.string,
+    webkitRelativePath: PropTypes.string,
+  }).isRequired,
 };
 
 export default PDFDocument;
