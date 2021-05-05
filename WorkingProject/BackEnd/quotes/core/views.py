@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from django.shortcuts import render
 from rest_framework.views import APIView
 from . models import *
@@ -40,5 +39,3 @@ def handleRequest(request):
 	
 	
 	
-=======
->>>>>>> parent of a0fe33c1 (Merge branch 'main' into frontend-fix)
