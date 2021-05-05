@@ -1,0 +1,26 @@
+.footer-div {
+  background-color: var(--dark-grey);
+  min-height: 7em;
+  width: 100%;
+  position: relative;
+  bottom: 0;
+  text-align: center;
+}
+
+.footer-contact-info {
+  display: inline-block;
+  width: 200px;
+  margin: 30px auto;
+}
+
+svg {
+  fill: var(--white);
+  cursor: pointer;;
+  width: 50px;
+  height: 50px;
+  margin: 0 6% 0 0;
+}
+
+svg:hover {
+  fill: var(--black);
+}
