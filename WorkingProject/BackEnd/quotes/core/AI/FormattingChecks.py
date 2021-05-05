@@ -19,10 +19,15 @@ def formatting_checks(font_counts, font_styles, tages, para):
 	score = score + font_style_score
 	comments = comments + font_style_comments
 	
+	# Organize file based on header
 	organized_file = organize_headers(tages, para)
+	
+	# Check for section independence 
 	section_ind_score, section_ind_comments = check_section_independance(organized_file, para)
 	score = score + section_ind_score
 	comments = comments + section_ind_comments
+	
+	
 	
 	
 	return score, comments
