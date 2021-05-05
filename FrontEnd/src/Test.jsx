@@ -40,7 +40,7 @@ const Test = () => {
             <div id="parent">
               
               <div style={{
-              height: '850px', marginLeft: '10%', marginRight: '10%', marginTop: '150px', fontSize: '30px',
+              height: '950px', marginLeft: '10%', marginRight: '10%', marginTop: '150px', fontSize: '30px',
               }}
               >
                 <h2 style={{"height": 200, "text-align":"center", "line-height": 400}}> Overview For:</h2>
@@ -84,20 +84,35 @@ const Test = () => {
                   {' '}
                   {context.result.formattingScore}
                 </p>
-                <p style={{fontSize: '10px', "text-align":"right", "line-height": 50}}>
+                <p style={{fontSize: '10px', "text-align":"center", "line-height": 50}}>
                   {' '}
                   {' '}
-                  {context.result.formattingComments}
+                  {displayArray(context.result.formattingComments)}
                 </p>
-
               </div>
             </div>
             
           );
+          
         }}
       </ResumeContext.Consumer>
     </div>
   );
+};
+
+function displayArray(arr) {
+  var i = 0;
+  var res = "";
+  while (i < arr.length) {
+    res = res + arr[i];
+    res = res +  '\n';
+    i++;
+  }
+
+  return (
+    <div className='new-line'>{res}</div>
+  );
+
 };
 
 

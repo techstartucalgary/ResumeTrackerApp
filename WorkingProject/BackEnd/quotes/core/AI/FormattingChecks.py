@@ -59,14 +59,14 @@ def check_font_sizes(font_counts):
 		prev_font_size = float(font_size)
 	
 	if (tooSmallFont > 0):
-		font_size_comments.append("Avoid font sizes smaller than 9 pt.\n")
+		font_size_comments.append("Avoid font sizes smaller than 9 pt.")
 	
 	
 	if (tooLargeFont > 0):
-		font_size_comments.append("Avoid font sizes larger than 20 pt.\n")
+		font_size_comments.append("Avoid font sizes larger than 20 pt.")
 	
 	if (inconsistency > 0):
-		font_size_comments.append("Dedicate the smallest font size to your bullet points. This allows you to save space.\n")
+		font_size_comments.append("Dedicate the smallest font size to your bullet points. This allows you to save space.")
 	
 	
 	font_size_score = (tooSmallFont + tooLargeFont + inconsistency)*-1
@@ -76,22 +76,21 @@ def check_font_sizes(font_counts):
 
 def check_font_styles(font_styles):
 	bad_fonts_count = 0
-	bad_fonts_comments = []
-	bad_fonts = []
+	bad_fonts_comments = ""
+	bad_fonts = ""
 	
 	for val in font_styles.values():
 		if not inn(val['font'], acceptable_fonts):
 			bad_fonts_count = bad_fonts_count + 1
-			bad_fonts.append(val['font'])
-			bad_fonts.append(", ")
+			bad_fonts = bad_fonts + val['font'] + ", "
 	
 	
 	if (bad_fonts_count > 0):
-		bad_fonts_comments.append("These fonts aren't typical to a professional resumé: ")
+		bad_fonts_comments = "These fonts aren't typical to a professional resumé: "
 		bad_fonts_comments = bad_fonts_comments + bad_fonts
 	
 	
-	return (bad_fonts_count*-1), bad_fonts_comments
+	return (bad_fonts_count*-1), [bad_fonts_comments]
 
 
 def inn(strn, list_elements):
