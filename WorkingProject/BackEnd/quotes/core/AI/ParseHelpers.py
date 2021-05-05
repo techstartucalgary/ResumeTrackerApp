@@ -27,7 +27,7 @@ def isSubString(word1, word2):
 	j = 0
 	
 	while i < len(word1) and j < len(word2):
-		if word1[i] == word2[j]:
+		if word1.lower()[i] == word2.lower()[j]:
 			j = j + 1
 		else:
 			j = 0

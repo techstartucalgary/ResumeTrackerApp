@@ -6,7 +6,7 @@ from . ParseHelpers import *
     # Applicant's GPA > 3.5, or not written at all 
 
 def education_checks(block_of_text):
-    #print(block_of_text)        # To help you view what the argument looks like
+	#print(block_of_text)       
     #print("\n")
 	score = 0
 	comments = []  

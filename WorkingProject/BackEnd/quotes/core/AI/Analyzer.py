@@ -42,6 +42,8 @@ class Result:
 def compute(doc):
 	font_counts, styles, tags, paragraphs = pdfParse(doc)
 	
+	
+	
 	skills_block = getSection(paragraphs, "Skills")
 	education_block = getSection(paragraphs, "Education")
 	experience_block = getSection(paragraphs, "Experience")
