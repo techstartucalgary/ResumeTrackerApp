@@ -47,10 +47,12 @@ def compute(doc):
 	skills_block = getSection(paragraphs, "Skills")
 	education_block = getSection(paragraphs, "Education")
 	experience_block = getSection(paragraphs, "Experience")
+	skill_block = getSection(paragraphs, "Skill")
+	project_block = getSection(paragraphs, "Project")
 	
 	educationScore, educationComments = education_checks(education_block)
 	skillsScore, skillsComments = skills_checks(skills_block)
-	experienceScore, experienceComments = experience_checks(experience_block)
+	experienceScore, experienceComments = experience_checks(experience_block + skill_block + project_block)
 	formattingScore, formattingComments = formatting_checks(font_counts, styles, tags, paragraphs)
 	totalScore = educationScore + skillsScore + experienceScore + formattingScore
 	
