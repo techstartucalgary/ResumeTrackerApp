@@ -52,9 +52,9 @@ def compute(doc):
 	skillsScore, skillsComments = skills_checks(skills_block)
 	experienceScore, experienceComments = experience_checks(experience_block)
 	formattingScore, formattingComments = formatting_checks(font_counts, styles, tags, paragraphs)
-	totalScore = 0
+	totalScore = educationScore + skillsScore + experienceScore + formattingScore
 	
-	res = Result('0', educationScore, educationComments, experienceScore, experienceComments, formattingScore, formattingComments, "NoName", "N/A")
+	res = Result(str(int(totalScore)), educationScore, educationComments, experienceScore, experienceComments, formattingScore, formattingComments, "NoName", "N/A")
 	
 	return res.dict
 

@@ -59,13 +59,13 @@ def education_checks(block_of_text):
                 try:
                     if 4.0 > float(subBlocks[index]) >= 3.5:
                         score = score + 10
-                        comments.append("GPA detected")
+                        comments.append("Your GPA: " + str(float(subBlocks[index])) + " is high. Great job!.")
                         gpaStatus = True
                         break
 
                     elif float(subBlocks[index]) < 3.5:
                         score = score - 10
-                        comments.append("It is recommended that you only include a GPA of 3.5 or higher.")
+                        comments.append("Your GPA: " + str(float(subBlocks[index])) + " is somewhat low. It is recommended that you only include a GPA of 3.5 or higher!.")
                         gpaStatus = True
                         break
                 except ValueError:
