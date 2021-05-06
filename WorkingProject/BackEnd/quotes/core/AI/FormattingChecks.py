@@ -9,9 +9,11 @@ def formatting_checks(font_counts, font_styles, tages, para):
 	#print(tages)
 	#print(para)
 	
+	score = 0
+	
 	# Check font sizes
 	font_size_score, font_size_comments = check_font_sizes(font_counts)
-	score = font_size_score
+	score = score + font_size_score
 	comments = font_size_comments  # you can add comments by comments.append("......")
 	
 	# Check font styles 
@@ -26,9 +28,6 @@ def formatting_checks(font_counts, font_styles, tages, para):
 	section_ind_score, section_ind_comments = check_section_independance(organized_file, para)
 	score = score + section_ind_score
 	comments = comments + section_ind_comments
-	
-	
-	
 	
 	return score, comments
 
