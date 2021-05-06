@@ -26,12 +26,32 @@ const ScoreBreakDown = ({ scoreCategory, score, comments }) => {
         <div className="score-dropdown">
           <h3>Comments: </h3>
           <br />
-          <h4>{comments}</h4>
+          <h4>{displayArray(comments)}</h4>
         </div>
       )}
     </div>
   );
+  
 };
+
+function displayArray(arr) {
+  var i = 0;
+  var res = "";
+  while (i < arr.length) {
+    if (arr[i].length > 0) {
+      res = res + "• " + arr[i];
+      res = res +  '\n' + '\n';
+    }
+
+    i++;
+  }
+
+  return (
+    <div className='new-line'>{res}</div>
+  );
+
+};
+
 
 ScoreBreakDown.propTypes = {
   scoreCategory: PropTypes.string.isRequired,
@@ -39,4 +59,10 @@ ScoreBreakDown.propTypes = {
   comments: PropTypes.string.isRequired,
 };
 
+
+
+
+
 export default ScoreBreakDown;
+
+

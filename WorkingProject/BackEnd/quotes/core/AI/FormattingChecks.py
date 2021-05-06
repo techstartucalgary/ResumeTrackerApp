@@ -78,16 +78,22 @@ def check_font_styles(font_styles):
 	bad_fonts_count = 0
 	bad_fonts_comments = ""
 	bad_fonts = ""
+	first = False
 	
 	for val in font_styles.values():
 		if not inn(val['font'], acceptable_fonts):
+			if (first):
+				bad_fonts = bad_fonts + ", "
+			
+			bad_fonts = bad_fonts + val['font']	
 			bad_fonts_count = bad_fonts_count + 1
-			bad_fonts = bad_fonts + val['font'] + ", "
+			first = True
+			
 	
 	
 	if (bad_fonts_count > 0):
 		bad_fonts_comments = "These fonts aren't typical to a professional resumé: "
-		bad_fonts_comments = bad_fonts_comments + bad_fonts
+		bad_fonts_comments = bad_fonts_comments + bad_fonts + "."
 	
 	
 	return (bad_fonts_count*-1), [bad_fonts_comments]
@@ -130,7 +136,7 @@ def check_section_independance(organized_file, para):
 	score = 0
 	comments = []
 	count_independent_sections = 0
-	non_independent_sections = []
+	non_independent_sections = ""
 	
 	
 	# Make sure education, experience and skills are in resume 
@@ -145,31 +151,39 @@ def check_section_independance(organized_file, para):
 		comments.append("Include a Skills section. ")
 	
 	# Make sure education, experience and skills, and/or projects get their own headers at the same level
+	first = False
 	for level in organized_file.keys():
 		titles = organized_file[level]
 		for each_section in present_sections:
 			if (inn(each_section, organized_file[level])):
 				count_independent_sections = count_independent_sections + 1
 			else:
-				non_independent_sections.append(each_section)
+				if (first):
+					non_independent_sections = non_independent_sections + ", "
+				non_independent_sections = non_independent_sections + each_section
+				first = True
 		
 		if count_independent_sections > 0:
 			break
 		
 		else:
-			non_independent_sections = []
+			non_independent_sections = ""
+			first = False
 
 	
+	first = False
 	if ((count_independent_sections < len(present_sections)) and (count_independent_sections > 0)):
 		score = (len(non_independent_sections))*-1
-		comments.append("The headers: ")
-		for n in non_independent_sections:
-			comments.append(n)
-			comments.append(", ")
-		comments.append(" should have the same category level as the headers: ")
+		section_comment  = "The following headers, "
+		section_comment = section_comment + non_independent_sections + ", "
+		section_comment = section_comment + " should have the same category level as the headers: "
 		for d in setDifference(present_sections, non_independent_sections):
-			comments.append(d)
-			comments.append(", ")
+			if (first):
+				section_comment = section_comment + ", "
+			section_comment = section_comment + d
+			first = True
+		section_comment = section_comment + "."
+		comments.append(section_comment)
 
 	
 	return score, comments
