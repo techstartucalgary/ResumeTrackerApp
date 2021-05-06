@@ -1,25 +1,23 @@
 import { AiOutlineCloudUpload } from 'react-icons/ai';
 import { useHistory } from 'react-router-dom';
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import ResumeSearch from '../../assets/ResumeSearch.svg';
 import Underline from '../../assets/Underline.svg';
 import ResumeContext from '../../contexts/ResumeContext';
 import Balloons from '../../assets/Balloons.svg';
+import Nav from '../../components/Nav/Nav';
+import Footer from '../../components/Footer/Footer';
 import ComputerSearch from '../../assets/ComputerSearch.svg';
 import Person from '../../assets/Person.svg';
 import './LandingPage.scss';
 
 const LandingPage = () => {
   const history = useHistory();
-  const { formData, requestResults } = useContext(ResumeContext);
+  const { requestResults } = useContext(ResumeContext);
 
-  useEffect(() => {
-    if (formData != null) {
-      history.push('/results');
-    }
-  }, [formData, history]);
   return (
     <div>
+      <Nav />
       <div className="main-div">
         <div className="upload-div">
           <div className="upload-left">
@@ -49,31 +47,28 @@ const LandingPage = () => {
           />
         </div>
         <div className="upload-file">
-          <ResumeContext.Consumer>
-            {() => (
-              <label htmlFor="input-file">
-                <i>
-                  <AiOutlineCloudUpload />
-                </i>
-                <p className="button-text">Upload Your Resume</p>
-                <input
-                  id="input-file"
-                  type="file"
-                  onChange={(e) => {
-                    e.preventDefault();
-                    const sentFormData = new FormData();
-                    sentFormData.append(
-                      'myFile',
-                      e.target.files[0],
-                      e.target.files[0].name,
-                    );
-                    requestResults(sentFormData);
-                  }}
-                  hidden
-                />
-              </label>
-            )}
-          </ResumeContext.Consumer>
+          <label htmlFor="input-file">
+            <i>
+              <AiOutlineCloudUpload />
+            </i>
+            <p className="button-text">Upload Your Resume</p>
+            <input
+              id="input-file"
+              type="file"
+              onChange={(e) => {
+                e.preventDefault();
+                const sentFormData = new FormData();
+                sentFormData.append(
+                  'myFile',
+                  e.target.files[0],
+                  e.target.files[0].name,
+                );
+                history.push('/results');
+                requestResults(sentFormData);
+              }}
+              hidden
+            />
+          </label>
         </div>
       </div>
       <div name="service" className="service-div">
@@ -90,12 +85,12 @@ const LandingPage = () => {
             companies use an Applicant Tracking System (ATS),
             which scans all resumes and then decides if your resume is worth being passed
             on to a recruiter.
-            Some of them simply search for keywords while organizing candidates&apos
+            Some of them simply search for keywords while organizing candidates&apos;
             documents, making them searchable.
             Other ones use artificial intelligence for an even deeper analysis.
             These artificial intelligence models analyze
             past choices of the company to learn about the characteristics of desired employees.
-            Even though each organization&aposs
+            Even though each organization&apos;s
             selected employees are different according to its culture and values,
             all organizations have standard features that
             they look for in a candidate.
@@ -104,7 +99,7 @@ const LandingPage = () => {
         <div>
           <p className="our-text">
             Our system ensures that you get through the Applicant Tracking
-            System using AI&aposs power and gives you the chance to have your
+            System using AI&apos;s power and gives you the chance to have your
             resume checked by a recruiter.
             You can then get the chance to land that interview and your dream job. All free,
             with just one click!
@@ -123,6 +118,7 @@ const LandingPage = () => {
           />
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

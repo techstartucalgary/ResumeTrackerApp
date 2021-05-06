@@ -1,0 +1,31 @@
+.upload-box-container {
+  min-height: 130px;
+  background-color: var(--pink);
+  width: 72%;
+  margin: 40px auto;
+  border-radius: 20px;
+  border: 3.5px dotted var(--dark-blue);
+}
+
+.upload-box-container:hover {
+  opacity: 0.8;
+}
+
+.upload-box-inner > label {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  margin-top: 10px;
+}
+
+.default-inner {
+  width: 30%;
+  margin: auto;
+}
+
+.drop-message {
+  color: var(--black);
+  margin-top: 25px;
+}

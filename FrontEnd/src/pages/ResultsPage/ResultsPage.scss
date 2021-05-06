@@ -1,0 +1,42 @@
+.results-upper {
+  display: flex;
+  flex-direction: row;
+  margin: 10px 12.5% 10px 14%;
+  justify-content: space-between;
+}
+
+.results-score {
+  width: 50%;
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
+}
+
+.total-score {
+  margin: 20px auto;
+}
+
+@media (max-width: 1050px) {
+  .results-upper {
+    flex-direction: column;
+  }
+
+  .results-score {
+    margin: auto;
+    width: 100%;
+  }
+
+}
+
+#searching-animation {
+  width: 80%;
+  padding: 0px;
+  margin: auto;
+  height: 80vh;
+  margin-top: 60px;
+}
+
+#searching-animation > h1 {
+  margin: auto;
+  max-width: 450px;
+}
