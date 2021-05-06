@@ -117,7 +117,7 @@ def experience_checks(lines):
     		coverage_score = 40
     
     
-    total_score = int(general_words_score*0.10) + (job_score*0.20) + (software_score*0.40) + (coverage_score*0.30)
+    total_score = int((general_words_score*0.10) + (job_score*0.20) + (software_score*0.40) + (coverage_score*0.30))
 
     return total_score, comments
     

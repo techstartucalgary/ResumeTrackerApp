@@ -9,7 +9,7 @@ import re
 def education_checks(block_of_text):
     # print(block_of_text)        # To help you view what the argument looks like
     # print("\n")
-    score = 0
+    score = 100
     comments = []
 
     if (isSubString(block_of_text, "Computer Science")):
