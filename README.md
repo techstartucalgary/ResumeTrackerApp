@@ -101,26 +101,7 @@ You can open a new terminal window (doesn't have to be in virtual env), and ente
 At this point, your browser should open to to localhost:3000.
 There, you will see a basic interface for uploading file.
 To test this out, upload a pdf file. 
-The front end will send all of the bytes of that file to our back-end program, which reads it and returns a JSON body back to the front end.
-For now, I commented out the lines in our back-end that sends this JSON file, instead replacing it with a dummy JSON file. 
-
  
-
-	
-TASKS for Front-End Team:
-Now that we got a working app set up, you can focus on implementing your design without having to worry about anything in the back-end or uploading files.
-All of that will be handled for you. 
-Check out the file in the path: ResumeTrackerApp/WorkingProject/FrontEnd/testServer/app/src/App.js
-This is where the basic front-end program is implemented it. Check it out in order to get a feel for how it works, and how you can implement your design around it. 
-
-	
-	
-TASKS for Back-End Team:
-Since our front-end/back-end connection and uploading files is now handled, we can continue improving our parsing and AI programs. 
-I set up a working Parser module in the path: ResumeTrackerApp/WorkingProject/BackEnd/quotes/core/Parser.py
-For each of you, please send me your in progress work (don't worry if its incomplete or not yet implemented with python).
-I will put everything together in the next several days, and we should have our working app completed.
-From that point on, we can focus on tests and improvements (and perhaps finally implementing our machine learning!), while our front-end implements the design. 
 
 
 
