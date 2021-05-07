@@ -1,3 +1,11 @@
+To do
+- Adding more checks for experiences and formatting
+- Cleaning up code, and improving modularity 
+
+
+
+
+
 Instructions for setting up project on your computer:
 WARNING: Things you will need to have before starting:
 Python 3. To make sure you have it, run the following command to check:
